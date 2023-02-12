@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import * as Yup from "yup";
 import axios from 'axios';
+import "../Form.css"
 
 const formSchema=Yup.object().shape({
     isim:Yup
@@ -18,21 +19,23 @@ const formSchema=Yup.object().shape({
     malzeme3:Yup
     .boolean(),
     malzeme4:Yup
-    .boolean()
+    .boolean(),
+    pizzas:Yup
+    .string()
 });
 
 export default function Form(){
     const [formInfo, setFormInfo]=useState({
         isim:"",
         boyut:"",
-        malzeme1:false,
-        malzeme2:false,
-        malzeme3:false,
-        malzeme4:false,
+        malzeme1:"",
+        malzeme2:"",
+        malzeme3:"",
+        malzeme4:"",
         özel:""
     });
     
-    const [buttonDisabled, setButtonDİsabled]=useState(true)
+    const [buttonDisabled, setButtonDisabled]=useState(false)
 
     const [errors, setErrors]=useState({
         isim:"",
@@ -53,14 +56,14 @@ export default function Form(){
 		    console.log("success", response);
 	    })
 	    .catch(error=> {
-		console.log(error.response);
+		//console.log(error.response);
 	});
     }
     
 
     useEffect(()=>{
         formSchema.isValid(formInfo).then((valid)=>
-        setButtonDİsabled(!valid));
+        setButtonDisabled(!valid));
     }, [formInfo]);
 
     const checkFormErrors=(name, value)=>{
@@ -83,37 +86,41 @@ export default function Form(){
     const handleChange=e=>{
         let definedValue=
         e.target.type==="checkbox"?e.target.checked:e.target.value;
-       // e.target.name==="boyut"?e.target.selected;
-        checkFormErrors(e.target.name, definedValue )
+        //console.log("değer testi", e.target.value)
+        //let selection=e.target.name==="boyut"?e.target.selected:e.target.value;
+         checkFormErrors(e.target.name, definedValue )
         setFormInfo({
             ...formInfo,
-            [e.target.name]:definedValue
+            [e.target.name]:e.target.value,
+            //[e.target.selected]:selection,
         })
+        //console.log(formInfo)
     }
 
     return(
-        <div>
-            <form id='pizza-form'>
-                <label>İsim Soyisim</label>
-                <input type="text" id="name-input" name="isim" value={formInfo.isim} onChange={handleChange}></input>
-                {errors.isim !=="" &&  <div style={{color:"red", fontSize:"15px"}}>{errors.isim}</div>}
-                <button 
-                type="submit"
-                disabled={buttonDisabled}>
-                Gönder
-                </button>
+        <div class="forming">
+           
+            <form onSubmit={formSubmit} id='pizza-form'>
+                <div class="isim"> 
+                    <label>İsim Soyisim</label>
+                    <input type="text" id="name-input" name="isim" value={formInfo.isim} onChange={handleChange}></input>
+                    {errors.isim !=="" &&  <div style={{color:"red", fontSize:"15px"}}>{errors.isim}</div>}
+                </div>
+                <div class="dropdown">
                 <p>
                 Boyutu seç ARTIK
-                <br/>
-                    <select id="size-dropdown" name="pizzas">
-                        <option name="boyut" value="small" onChange={handleChange} selected={formInfo.boyut}>küçük</option>
-                        <option name="boyut" value="medium"  onChange={handleChange} selected={formInfo.boyut}>orta</option>
-                        <option name="boyut" value="large"  onChange={handleChange} selected={formInfo.boyut}>büyük</option>
-                    </select>
+                    <select onChange={handleChange} id="size-dropdown" name="pizzas">
+                        <option name="boyut" value="small" selected={formInfo.boyut}>küçük</option>
+                        <option name="boyut" value="medium" selected={formInfo.boyut}>orta</option>
+                        <option name="boyut" value="large" selected={formInfo.boyut}>büyük</option>
+                    </select> 
                 </p>
-                <p>
+                </div>
+                <div class="checkbox">
+                    <p>
                  Malzemeler gelsin!!
-                </p>
+                    <br/>
+                <div class="inputList">
                    <input type="checkbox" name="malzeme1" value="Mantar" onChange={handleChange} checked={formInfo.malzeme1}></input>
                    <label for="mantar">Mantar</label><br/>
                    <input type="checkbox" name="malzeme2" value="Zeytin" onChange={handleChange} checked={formInfo.malzeme2}></input>
@@ -122,15 +129,20 @@ export default function Form(){
                    <label for="rokfor">Rokfor</label><br/>
                    <input type="checkbox" name="malzeme4" value="Pastırma" onChange={handleChange} checked={formInfo.malzeme4}></input>
                    <label for="pastırma">Pastırma</label>
-                   <br/>
+                   </div>
+                   </p>
+                </div>
+                <div class="secimler">
                     <p>
                         Özel Seçimler
-                        <br/>
                         <input type="text" id="special-text" name="özel" value={formInfo.özel} onChange={handleChange}></input> 
                     </p>
+                </div>
+                <div class="order">   
                     <p>
-                        <button type="submit" id="order-button" onClick={formSubmit}>Siparişlere Ekle</button>
+                        <button type="submit" id="order-button" >Siparişlere Ekle</button>
                     </p>
+                </div> 
             </form>
         </div>
     )

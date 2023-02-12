@@ -1,4 +1,6 @@
 import React from "react";
+import "./App.css";
+
 import { 
 BrowserRouter,
 Switch,
@@ -10,8 +12,9 @@ import Home from "./components/Home";
 const App = () => {
   return (
     <BrowserRouter>
+    <header>
       <h1>Teknolojik Yemekler</h1>
-      <p>Burdaki kodu silip kendi headerınızı ekleyebilirsiniz</p>
+  
       <nav className="order-pizza">
         <a>
           <Link to="/">Home</Link>
@@ -20,6 +23,7 @@ const App = () => {
           <Link to="/pizza">Form</Link>
         </a>
       </nav>
+    </header>
       <div className="App">
         <Switch>
           <Route exact path="/" component={Home}  />
