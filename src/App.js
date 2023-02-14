@@ -10,18 +10,18 @@ import Form from "./components/Form";
 import Home from "./components/Home";
 
 const App = () => {
+
   return (
     <BrowserRouter>
     <header>
       <h1>Teknolojik Yemekler</h1>
   
       <nav className="order-pizza">
-        <a>
-          <Link to="/">Home</Link>
-        </a>
-        <a>
-          <Link to="/pizza">Form</Link>
-        </a>
+       
+          <Link to="/">Anasayfa</Link>
+        
+          <Link to="/pizza">Sipariş Ver</Link>
+        
       </nav>
     </header>
       <div className="App">
