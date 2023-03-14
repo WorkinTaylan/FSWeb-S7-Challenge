@@ -50,6 +50,7 @@
   
 section.first-section{
     background-image: url("../Pizza.jpg");
+    background-repeat: no-repeat;
     width: 100%;
     height: 100vh;
     text-align: center;
@@ -62,4 +63,4 @@ section.first-section{
     background-color: antiquewhite;
     color:#A555EC;
     text-decoration: none;
-}
+  }

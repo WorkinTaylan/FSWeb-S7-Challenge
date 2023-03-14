@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
-
 import { 
 BrowserRouter,
 Switch,
 Route,
 Link} from "react-router-dom";
 import Form from "./components/Form";
-import Home from "./components/Home";
+import Home from "./components/Home"
+
 
 const App = () => {
 
