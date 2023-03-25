@@ -17,7 +17,7 @@ const App = () => {
       <h1>Teknolojik Yemekler</h1>
   
       <nav className="order-pizza">
-       
+      
           <Link to="/">Anasayfa</Link>
         
           <Link to="/pizza">Sipariş Ver</Link>

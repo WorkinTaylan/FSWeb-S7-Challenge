@@ -48,19 +48,28 @@
     isolation: isolate;
   }
   
-section.first-section{
+  section.first-section {
+    color:white;
     background-image: url("../Pizza.jpg");
     background-repeat: no-repeat;
-    width: 100%;
-    height: 100vh;
-    text-align: center;
-    padding: 20%;
-    color:#F9F5F0;
-    font-size: 1.2rem;
-}
+    background-size: cover; /* make the background image cover the entire section */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; /* Center vertically */
+    flex-direction: column;
+    height: 100vh; /* set the section height to fill the viewport height */
+    gap: 2rem;
+  }
 
 .first-section a{
     background-color: antiquewhite;
     color:#A555EC;
     text-decoration: none;
+  }
+
+  @media screen and (max-width:768px) {
+    section.first-section{
+      background-position: center;
+      height: auto;
+    }
   }

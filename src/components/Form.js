@@ -105,12 +105,12 @@ export default function Form(){
             <div className="top">
                 <h2>Pizzanı Yarat!</h2>
                 <Main/>
-           </div>
-           <h3>Pizzanı Yarat!</h3>
+            </div>
+            <h3>Pizzanı Yarat!</h3>
                 <section className="Build"> 
                     <form onSubmit={formSubmit} id='pizza-form'>
                         <div className="isim"> 
-                            <label htmlFor="isim">İsim Soyisim</label>
+                            <label for="isim">İsim Soyisim</label>
                             <input type="text" id="name-input" name="isim" value={formInfo.isim} onChange={handleChange} placeholder="İsim Soyisim"></input>
                             {errors.isim !=="" && <p style={{color:"red", fontSize:"20px", fontWeight:"bold"}}>{errors.isim}</p>}
                         </div>
@@ -129,20 +129,20 @@ export default function Form(){
                             <div className="inputList">
                                 
 
-                                <label htmlFor="mantar"> 
-                                <input type="checkbox" name="Mantar" value="Mantar" onChange={handleChange} checked={formInfo.Mantar}></input>
+                                <label for="mantar"> 
+                                <input type="checkbox"  id="mantar" name="Mantar" value="Mantar" onChange={handleChange} checked={formInfo.Mantar}></input>
                                 Mantar
                                 </label>
-                                <label htmlFor="zeytin">
-                                <input type="checkbox" name="Zeytin" value="Zeytin" onChange={handleChange} checked={formInfo.Zeytin}></input>
+                                <label for="zeytin">
+                                <input type="checkbox"  id="zeytin" name="Zeytin" value="Zeytin" onChange={handleChange} checked={formInfo.Zeytin}></input>
                                 Zeytin
                                 </label>
-                                <label htmlFor="rokfor">
-                                <input type="checkbox" name="Rokfor" value="Rokfor" onChange={handleChange} checked={formInfo.Rokfor}></input>
+                                <label for="rokfor">
+                                <input type="checkbox"  id="rokfor" name="Rokfor" value="Rokfor" onChange={handleChange} checked={formInfo.Rokfor}></input>
                                 Rokfor
                                 </label>
-                                <label htmlFor="pastırma">
-                                <input type="checkbox" name="Pastırma" value="Pastırma" onChange={handleChange} checked={formInfo.Pastırma}></input>
+                                <label for="pastırma">
+                                <input type="checkbox" id="pastırma" name="Pastırma" value="Pastırma" onChange={handleChange} checked={formInfo.Pastırma}></input>
                                 Pastırma
                                 </label>
                             </div>
@@ -155,9 +155,9 @@ export default function Form(){
                                 
                             </div>
                             <div className="order">   
-                               
+                            
                                 <button type="submit" id="order-button" disabled={buttonDisabled} onClick={orderAlert}>Siparişlere Ekle ACIKTIK!</button>
-                               
+                            
                             </div> 
 
                     </form>

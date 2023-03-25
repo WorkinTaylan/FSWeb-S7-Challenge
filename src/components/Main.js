@@ -12,7 +12,7 @@ export default function Main(){
                     <Link to="/pizza">Pizza?</Link>
                 </button>
             </section>
-       
+    
         
     )
 }

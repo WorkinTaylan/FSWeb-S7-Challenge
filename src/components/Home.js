@@ -10,19 +10,21 @@ const Home=()=>{
     return (
         <div>
             <Main/>
+            <div className="storesDiv">
             <section className="second-section">
-              
+            
                 {Dummy.map(item=>(
-                   <p>
-                     <img src={item.img} alt={item.img}/>
-                     <figcaption>{item.title}<br/>
-                     {item.hours}</figcaption>
-                     <a href={item.menu} style={{textDecoration:"none", color:"crimson",borderStyle:"solid",borderWidth:"3px", padding:"5px"}}>NELER VAR NELER</a>
+                <p className="stores">
+                    <img src={item.img} alt={item.img}/>
+                    <figcaption>{item.title}<br/>
+                    {item.hours}</figcaption>
+                    <a href={item.menu} style={{textDecoration:"none", color:"crimson",borderStyle:"solid",borderWidth:"3px", padding:"5px"}}>NELER VAR NELER</a>
                         
-                   </p>
+                </p>
                     ))}
             
             </section>
+            </div>
         </div>
     )
 }
